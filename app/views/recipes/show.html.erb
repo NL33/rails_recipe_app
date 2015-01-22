@@ -1,0 +1,12 @@
+<h1><%= @recipe.name %></h1>
+ 
+<h2>Ingredients:&nbsp&nbsp<%= @recipe.ingredients %></h2>
+
+<h2>Instructions:&nbsp&nbsp<%= @recipe.instructions %></h2>
+
+<h2>Add a tag:
+	<form action="<%= @recipe.id %>/tags/new" method="post">
+	<label for="tag_name">Tag Name</label>
+    <input id="tag_name" name="tag[name]" type="string">
+    <button>Add Tag to this Recipe</button>
+	</form></h2>

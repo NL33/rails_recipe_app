@@ -1,0 +1,12 @@
+<h1>Add a Recipe</h1>
+
+<%= render('layouts/errors', :object => @recipe) %>
+
+<form action="/recipes/new" method="post">
+  <%= render('form') %>
+  <button>Add Recipe</button>
+</form>
+
+
+
+ </br></br></br><h4><a href="/recipes">Back to Home Page</a></h4>

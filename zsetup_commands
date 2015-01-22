@@ -1,0 +1,47 @@
+$ rails new rails_recipe_app -d postgresql –T
+
+[note: can also replace the postgres reference by creating a file called .railsrc in your home directory and type -d postgresql -T.]
+
+*2 temporary configuration changes:
+	config/application.rb: add config.action_controller.permit_all_parameters = true just before the last two end keywords. 
+	app/controllers/application_controller.rb: comment out the line that says protect_from_forgery with: :exception.
+
+*Database.yml:
+
+development:   
+  adapter: postgresql   
+  database: rails_recipe_app_development    
+
+test:
+  adapter: postgresql   
+  database: rails_recipe_app_test
+
+*open postgres
+
+$ rake db:create
+
+*set up gem file
+$ bundle install
+
+*Testing
+
+$ rails generate rspec:install
+
+create models folder in models folder in spec and add [file model_name]_spec.rb
+
+*Bootstrap
+stylesheets/application.css: change to css.scss.  Add:
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+javascripts/application.js: Add:
+//= require bootstrap-sprockets
+
+*Migration
+
+$ rails generate migration create_recipes    
+$ rails generate migration create_tags
+$ rails generate migration create_recipes_tags
+	$ rake db:rollback VERSION=20150121004709 (delete file first)
+	$ rails generate migration RemoveRecipie_IdFromRecipesTags recipie_id:integer
+	$ rails generate migration AddRecipe_IdToRecipesTags recipe_id:integer   

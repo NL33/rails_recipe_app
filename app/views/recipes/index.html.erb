@@ -1,0 +1,19 @@
+<h1>The Recipe App!</h1>
+
+<h2> This is the place to add, find, and rate recipes.</h2>
+  
+<h2> Recipes: </h2>
+<ul>
+
+ <% if @recipes != nil %>
+  <% @recipes.each do |recipe| %>
+    <h2>&nbsp&nbsp  <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a></h2>
+    <h3> Tags: </h3>
+    <% recipe.tags.each do |tag| %>
+     <h3><%= tag.name %></h3>
+     <% end %>
+  <% end %>
+ <% end %>
+
+
+<a href="/recipes/new">Add a New Recipe</a> </br>
