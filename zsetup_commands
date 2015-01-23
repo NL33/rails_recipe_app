@@ -41,6 +41,8 @@ javascripts/application.js: Add:
 
 $ rails generate migration create_recipes    
 $ rails generate migration create_tags
+$ rails generate migration create_star_ratings
+$ rails generate migration create_recipes_star_ratings
 $ rails generate migration create_recipes_tags
 	$ rake db:rollback VERSION=20150121004709 (delete file first)
 	$ rails generate migration RemoveRecipie_IdFromRecipesTags recipie_id:integer

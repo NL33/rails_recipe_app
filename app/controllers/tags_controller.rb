@@ -6,7 +6,12 @@ class TagsController < ApplicationController
     @tag.save
     recipe.tags << @tag
 	flash[:notice] = "Tag Added to #{recipe.name}!"
-	redirect_to('/recipes')
+	redirect_to("/recipes/#{recipe.id}") 
+  end
+
+  def show
+    @tag = Tag.find(params[:id]) 
+    render('tags/show.html.erb')
   end
 
 end

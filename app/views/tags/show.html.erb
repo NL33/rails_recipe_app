@@ -1,0 +1,8 @@
+
+
+<h3>Recipes with the Tag <%= @tag.name %>:</h3>
+
+<h3> <% @tag.recipes.each do |recipe| %>
+     <%= recipe.name %> 
+     <% end %></h3>
+

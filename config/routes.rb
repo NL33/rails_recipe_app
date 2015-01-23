@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
 
-#Recipes
+#recipes
   match('/', {:via => :get, :to => 'recipes#index'})
   match('recipes', {:via => :get, :to => 'recipes#index'}) 
   match('/recipes/new', {:via => :get, :to => 'recipes#new'})
   match('recipes/new', {:via => :post, :to => 'recipes#create'})
   match('recipes/:id', {:via => :get, :to => 'recipes#show'})
   
-#Tags
+#tags
   match('recipes/:recipe_id/tags/new', {:via => :post, :to => 'tags#create'})
+  match('tags/:id', {:via => :get, :to => 'tags#show'})
 
+#star_ratings
+  match('recipes/:recipe_id/star_ratings/new', {:via => :post, :to => 'star_ratings#create'})
 
   #match('/sections/:section_id/lessons/new', {:via => :get, :to => 'lessons#new'}) #Not used. Provied for illustration. This could be used if wanted to link to new lesson page from a section show page, and creating lesson would automatically link lesson to that section.
   #match('/sections/:section_id/lessons', {:via => :post, :to => 'lessons#create'}) #Not used. Provied for illustration. This could be used (with above unused route) if wanted to link to new lesson page from a section show page, and creating lesson would automatically link lesson to that section.

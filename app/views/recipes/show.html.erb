@@ -4,9 +4,20 @@
 
 <h2>Instructions:&nbsp&nbsp<%= @recipe.instructions %></h2>
 
-<h2>Add a tag:
+<h3> Tags: <% @recipe.tags.each do |tag| %>
+     <%= tag.name %>, 
+     <% end %></h3>
+
+<h3>Add a tag:
 	<form action="<%= @recipe.id %>/tags/new" method="post">
 	<label for="tag_name">Tag Name</label>
     <input id="tag_name" name="tag[name]" type="string">
     <button>Add Tag to this Recipe</button>
-	</form></h2>
+	</form></h3>
+
+<h3>Add a star rating:
+	<form action="<%= @recipe.id %>/star_ratings/new" method="post">
+	<label for="star_rating_rating">(1 to 5)</label>
+	<input id="star_rating_rating" name="star_rating[rating]" type="integer">
+	<button>Add Star Rating to this Recipe</button>
+	</form></h3>
