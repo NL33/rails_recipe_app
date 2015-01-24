@@ -2,21 +2,57 @@
 
 <h2> This is the place to add, find, and rate recipes.</h2>
   
-<h2> Recipes: </h2>
+<h2> Recipes (sorted by star rating): </h2>
 <ul>
 
- <% if @recipes != nil %>
-  <% @recipes.each do |recipe| %>
-    <h2>&nbsp&nbsp  <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a></h2>
-    <h3> Tags: </h3>
-    <% recipe.tags.each do |tag| %>
-     <h3><a href="/tags/<%= tag.id %>"><%= tag.name %></h3>
-     <% end %>
-      <h3> Average Star Rating: </h3>
-      <h3><%= recipe.average_rating %></h3>
-  <% end %>
+<% if @recipes != nil %>
+	  <% Recipe.order_by_rating.each do |recipe, star_rating| %>
+	    <h2> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a></h2>
+	    <h3> Tags: </h3>
+	    <p><% recipe.tags.each do |tag| %>
+	      <a href="/tags/<%= tag.id %>"><%= tag.name %></a>&nbsp&nbsp&nbsp   
+	    <% end %></p>
+	        <h3> Average Star Rating: </h3>
+	        <h3><%= recipe.average_rating %></h3>
+	  <% end %>
+	  <% @recipes.each do |recipe| %>
+	   <% if !(recipe.average_rating >= 0) %>
+	     <h2> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a></h2>
+	     <h3> Tags: </h3>
+	      <p><% recipe.tags.each do |tag| %>
+	      <a href="/tags/<%= tag.id %>"><%= tag.name %>
+	    <% end %></p>
+	   <% end %>
+	  <% end %>
  <% end %>
 
 
 <a href="/recipes/new">Add a New Recipe</a> </br>
-<h4> Note: click on tags to search recipes by tags </br>
+
+<h3> Search by Tag </h3>
+  <div class="row">
+    <div class="col-md-6">
+      <form class="form-inline" action="/" method="get">
+        <div class="form-group">
+          <input class="form-control" name="query" placeholder="Enter Tag to Search" type="text">
+          <button class="btn btn-default" >Search</button>
+        </div>
+      </form>
+    </div>
+ 
+ <% if @tag_results != nil %>
+
+  <h2>Results</h2>
+
+    <ul>
+    	
+      <% @tag_results.each do |tag| %>
+        <% tag.recipes.each do |recipe| %>
+        	<li><%= recipe.name %></li>
+         <% end %>
+      <% end %>
+    </ul>
+  <% else %>
+    <p> No results. </p>
+  <% end %>
+</div>

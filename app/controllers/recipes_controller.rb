@@ -2,9 +2,14 @@ class RecipesController < ApplicationController
   
   def index
     @recipes = Recipe.all
-    render('recipes/index.html.erb')
+    if params[:query]
+      @tag_results = Tag.basic_search(params[:query]) #note: another way, just find tags with the name submitted, and produce recipes of that tag
+      render('recipes/index.html.erb')
+    else
+      render('recipes/index.html.erb')
+    end
   end
-#
+
   def new 
     @recipe = Recipe.new 
     render('recipes/new.html.erb')
