@@ -42,7 +42,7 @@
  
  <% if @tag_results != nil %>
 
-  <h2>Results</h2>
+  <h2>Results from Tag Search</h2>
 
     <ul>
     	
@@ -52,7 +52,29 @@
          <% end %>
       <% end %>
     </ul>
-  <% else %>
-    <p> No results. </p>
+  <% end %>
+</div>
+
+<h3> Search Recipes </h3>
+  <div class="row">
+    <div class="col-md-6">
+      <form class="form-inline" action="/" method="get">
+        <div class="form-group">
+          <input class="form-control" name="search" placeholder="Enter Term" type="text">
+          <button class="btn btn-default">Search</button>
+        </div>
+      </form>
+    </div>
+
+ <% if @search_results != nil %>
+
+  <h2>Results from Key Word Search</h2>
+
+    <ul>
+      
+      <% @search_results.each do |result| %>
+          <%= result.name %>
+      <% end %>
+    </ul>
   <% end %>
 </div>

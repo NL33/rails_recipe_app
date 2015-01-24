@@ -5,7 +5,9 @@ class RecipesController < ApplicationController
     if params[:query]
       @tag_results = Tag.basic_search(params[:query]) #note: another way, just find tags with the name submitted, and produce recipes of that tag
       render('recipes/index.html.erb')
-    else
+    end
+    if params[:search]
+      @search_results = Recipe.basic_search(params[:search]) 
       render('recipes/index.html.erb')
     end
   end

@@ -9377,3 +9377,1279 @@ Processing by RecipesController#index as HTML
   [1m[35mRecipe Load (0.6ms)[0m  SELECT "recipes".* FROM "recipes" INNER JOIN "recipes_tags" ON "recipes"."id" = "recipes_tags"."recipe_id" WHERE "recipes_tags"."tag_id" = $1  [["tag_id", 17]]
   Rendered recipes/index.html.erb within layouts/application (15.6ms)
 Completed 200 OK in 160ms (Views: 156.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for ::1 at 2015-01-23 20:46:40 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RecipesController#index as HTML
+  [1m[35mRecipe Load (0.9ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mStarRating Load (1.3ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mStarRating Load (0.6ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (1.0ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.8ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  Rendered recipes/index.html.erb within layouts/application (117.2ms)
+Completed 500 Internal Server Error in 501ms
+
+AbstractController::DoubleRenderError - Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".:
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:15:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  app/controllers/recipes_controller.rb:15:in `index'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/196efe1e0da4e084/variables" for ::1 at 2015-01-23 20:46:41 -0500
+
+
+Started GET "/" for ::1 at 2015-01-23 20:47:13 -0500
+Processing by RecipesController#index as HTML
+  [1m[35mRecipe Load (0.6ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mStarRating Load (0.5ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mStarRating Load (0.7ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  Rendered recipes/index.html.erb within layouts/application (59.8ms)
+Completed 200 OK in 207ms (Views: 186.9ms | ActiveRecord: 12.1ms)
+
+
+Started GET "/?search=soy" for ::1 at 2015-01-23 20:47:26 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"soy"}
+  [1m[35mRecipe Load (0.4ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mStarRating Load (1.1ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mStarRating Load (0.7ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.7ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.7ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  Rendered recipes/index.html.erb within layouts/application (24.0ms)
+Completed 500 Internal Server Error in 29ms
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/recipes/index.html.erb:77:in `_app_views_recipes_index_html_erb___643270666068727834_70295391471420'
+  actionview (4.2.0) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.0) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.0) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.0) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.0) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  app/controllers/recipes_controller.rb:11:in `index'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/d16522c2a99d1ff1/variables" for ::1 at 2015-01-23 20:47:26 -0500
+  [1m[35mRecipe Load (33.2ms)[0m  SELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'soy'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'soy'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'soy'::text)), 0) AS "rank76610129963363349" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'soy'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'soy'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'soy'::text))  ORDER BY "rank76610129963363349" DESC
+
+
+Started GET "/?search=soy" for ::1 at 2015-01-23 20:47:44 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"soy"}
+  [1m[36mRecipe Load (0.5ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.4ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.4ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.7ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mRecipe Load (0.9ms)[0m  [1mSELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'soy'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'soy'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'soy'::text)), 0) AS "rank53608810119812927" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'soy'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'soy'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'soy'::text))  ORDER BY "rank53608810119812927" DESC[0m
+  Rendered recipes/index.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 140ms (Views: 135.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/?search=soy" for ::1 at 2015-01-23 20:47:53 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"soy"}
+  [1m[35mRecipe Load (0.4ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mStarRating Load (0.5ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mRecipe Load (1.2ms)[0m  SELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'soy'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'soy'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'soy'::text)), 0) AS "rank67741832482387810" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'soy'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'soy'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'soy'::text))  ORDER BY "rank67741832482387810" DESC
+  Rendered recipes/index.html.erb within layouts/application (20.3ms)
+Completed 200 OK in 160ms (Views: 155.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/?search=soy" for ::1 at 2015-01-23 20:51:10 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"soy"}
+  [1m[36mRecipe Load (0.6ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.3ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mRecipe Load (0.9ms)[0m  [1mSELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'soy'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'soy'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'soy'::text)), 0) AS "rank53019779139133163" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'soy'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'soy'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'soy'::text))  ORDER BY "rank53019779139133163" DESC[0m
+  Rendered recipes/index.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 157ms (Views: 152.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/recipes/2" for ::1 at 2015-01-23 20:51:17 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mRecipe Load (0.5ms)[0m  SELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  Rendered recipes/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 146ms (Views: 133.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/?search=cook" for ::1 at 2015-01-23 20:51:26 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"cook"}
+  [1m[35mRecipe Load (0.4ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mStarRating Load (0.3ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mRecipe Load (1.1ms)[0m  SELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'cook'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'cook'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'cook'::text)), 0) AS "rank6087497600703903" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'cook'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'cook'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'cook'::text))  ORDER BY "rank6087497600703903" DESC
+  Rendered recipes/index.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 150ms (Views: 145.6ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/?search=soy" for ::1 at 2015-01-23 20:51:36 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"soy"}
+  [1m[36mRecipe Load (0.4ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.4ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.4ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mRecipe Load (1.6ms)[0m  [1mSELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'soy'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'soy'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'soy'::text)), 0) AS "rank91270779466598402" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'soy'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'soy'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'soy'::text))  ORDER BY "rank91270779466598402" DESC[0m
+  Rendered recipes/index.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 145ms (Views: 140.2ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/?search=soy" for ::1 at 2015-01-23 20:51:40 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"soy"}
+  [1m[35mRecipe Load (0.4ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mStarRating Load (0.4ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mRecipe Load (1.2ms)[0m  SELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'soy'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'soy'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'soy'::text)), 0) AS "rank5434714885051553" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'soy'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'soy'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'soy'::text))  ORDER BY "rank5434714885051553" DESC
+  Rendered recipes/index.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 145ms (Views: 141.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/recipes/2" for ::1 at 2015-01-23 20:51:42 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.4ms)[0m  [1mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  Rendered recipes/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 107ms (Views: 105.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/?search=then" for ::1 at 2015-01-23 20:51:49 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"then"}
+  [1m[36mRecipe Load (0.4ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.6ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.3ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mRecipe Load (1.1ms)[0m  [1mSELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'then'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'then'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'then'::text)), 0) AS "rank30476297187865005" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'then'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'then'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'then'::text))  ORDER BY "rank30476297187865005" DESC[0m
+  Rendered recipes/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 117ms (Views: 112.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/?search=then" for ::1 at 2015-01-23 20:51:55 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"then"}
+  [1m[35mRecipe Load (0.4ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mStarRating Load (0.3ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mRecipe Load (1.4ms)[0m  SELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'then'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'then'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'then'::text)), 0) AS "rank27517844897338750" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'then'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'then'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'then'::text))  ORDER BY "rank27517844897338750" DESC
+  Rendered recipes/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 185ms (Views: 181.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/?search=cook" for ::1 at 2015-01-23 20:52:01 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"cook"}
+  [1m[36mRecipe Load (0.4ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.6ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.5ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mRecipe Load (1.1ms)[0m  [1mSELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'cook'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'cook'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'cook'::text)), 0) AS "rank2238153905406839" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'cook'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'cook'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'cook'::text))  ORDER BY "rank2238153905406839" DESC[0m
+  Rendered recipes/index.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 116ms (Views: 111.3ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/?search=some" for ::1 at 2015-01-23 20:52:08 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"some"}
+  [1m[35mRecipe Load (0.9ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mStarRating Load (0.4ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mRecipe Load (1.1ms)[0m  SELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'some'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'some'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'some'::text)), 0) AS "rank32152979652524438" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'some'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'some'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'some'::text))  ORDER BY "rank32152979652524438" DESC
+  Rendered recipes/index.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 217ms (Views: 212.0ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/recipes/1" for ::1 at 2015-01-23 20:52:11 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.5ms)[0m  [1mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  Rendered recipes/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 100ms (Views: 97.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/?search=chop" for ::1 at 2015-01-23 20:52:20 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"chop"}
+  [1m[36mRecipe Load (0.6ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.3ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mRecipe Load (1.3ms)[0m  [1mSELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'chop'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'chop'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'chop'::text)), 0) AS "rank10598143408305377" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'chop'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'chop'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'chop'::text))  ORDER BY "rank10598143408305377" DESC[0m
+  Rendered recipes/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 119ms (Views: 115.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/recipes/1" for ::1 at 2015-01-23 20:52:25 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRecipe Load (0.6ms)[0m  SELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  Rendered recipes/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 143ms (Views: 140.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/?search=wash" for ::1 at 2015-01-23 20:52:33 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"wash"}
+  [1m[35mRecipe Load (0.5ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mStarRating Load (0.4ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mStarRating Load (0.4ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (2.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mRecipe Load (0.9ms)[0m  SELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'wash'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'wash'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'wash'::text)), 0) AS "rank27237671679050321" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'wash'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'wash'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'wash'::text))  ORDER BY "rank27237671679050321" DESC
+  Rendered recipes/index.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 129ms (Views: 121.5ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/?search=and" for ::1 at 2015-01-23 20:52:38 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"and"}
+  [1m[36mRecipe Load (0.5ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.4ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.3ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (1.9ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'and'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'and'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'and'::text)), 0) AS "rank69079026832178512" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'and'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'and'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'and'::text))  ORDER BY "rank69079026832178512" DESC[0m
+  Rendered recipes/index.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 143ms (Views: 137.2ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/?search=and" for ::1 at 2015-01-23 20:53:01 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"and"}
+  Rendered recipes/index.html.erb within layouts/application (2.0ms)
+Completed 500 Internal Server Error in 5ms
+
+SyntaxError - syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/sean/Desktop/Epicodus/rails_recipe_app/app/views/recipes/index.html.erb:81: syntax error, unexpected end-of-input, expecting keyword_end:
+  app/views/recipes/index.html.erb:79:in `'
+  actionview (4.2.0) lib/action_view/template.rb:296:in `compile'
+  actionview (4.2.0) lib/action_view/template.rb:245:in `block (2 levels) in compile!'
+  activesupport (4.2.0) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:244:in `block in compile!'
+  actionview (4.2.0) lib/action_view/template.rb:232:in `compile!'
+  actionview (4.2.0) lib/action_view/template.rb:144:in `block in render'
+  activesupport (4.2.0) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.0) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.0) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.0) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  app/controllers/recipes_controller.rb:11:in `index'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/a67a19befae254c3/variables" for ::1 at 2015-01-23 20:53:01 -0500
+  [1m[35mRecipe Load (0.4ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'and'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'and'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'and'::text)), 0) AS "rank84930012524188930" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'and'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'and'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'and'::text))  ORDER BY "rank84930012524188930" DESC[0m
+
+
+Started GET "/?search=and" for ::1 at 2015-01-23 20:53:21 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"and"}
+  [1m[35mRecipe Load (0.5ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mStarRating Load (0.3ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mStarRating Load (0.2ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mRecipe Load (1.3ms)[0m  SELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'and'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'and'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'and'::text)), 0) AS "rank42108456549951473" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'and'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'and'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'and'::text))  ORDER BY "rank42108456549951473" DESC
+  Rendered recipes/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 142ms (Views: 138.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/?query=tagy" for ::1 at 2015-01-23 20:53:29 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"query"=>"tagy"}
+  [1m[36mRecipe Load (0.5ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.6ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.4ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (1.0ms)[0m  [1mSELECT "tags".*, COALESCE(ts_rank(to_tsvector('english', "tags"."name"::text), plainto_tsquery('english', 'tagy'::text)), 0) AS "rank55278029424530623" FROM "tags" WHERE (to_tsvector('english', "tags"."name"::text) @@ plainto_tsquery('english', 'tagy'::text))  ORDER BY "rank55278029424530623" DESC[0m
+  [1m[35mRecipe Load (0.5ms)[0m  SELECT "recipes".* FROM "recipes" INNER JOIN "recipes_tags" ON "recipes"."id" = "recipes_tags"."recipe_id" WHERE "recipes_tags"."tag_id" = $1  [["tag_id", 21]]
+  Rendered recipes/index.html.erb within layouts/application (25.2ms)
+Completed 200 OK in 124ms (Views: 119.1ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/?search=cook" for ::1 at 2015-01-23 20:53:37 -0500
+Processing by RecipesController#index as HTML
+  Parameters: {"search"=>"cook"}
+  [1m[36mRecipe Load (0.5ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.3ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  [1m[36mRecipe Load (1.3ms)[0m  [1mSELECT "recipes".*, COALESCE(ts_rank(to_tsvector('english', "recipes"."name"::text), plainto_tsquery('english', 'cook'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."ingredients"::text), plainto_tsquery('english', 'cook'::text)), 0) + COALESCE(ts_rank(to_tsvector('english', "recipes"."instructions"::text), plainto_tsquery('english', 'cook'::text)), 0) AS "rank16267205259235905" FROM "recipes" WHERE (to_tsvector('english', "recipes"."name"::text) @@ plainto_tsquery('english', 'cook'::text) OR to_tsvector('english', "recipes"."ingredients"::text) @@ plainto_tsquery('english', 'cook'::text) OR to_tsvector('english', "recipes"."instructions"::text) @@ plainto_tsquery('english', 'cook'::text))  ORDER BY "rank16267205259235905" DESC[0m
+  Rendered recipes/index.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 137ms (Views: 132.3ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/recipes/2" for ::1 at 2015-01-23 20:57:17 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mRecipe Load (0.3ms)[0m  SELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  Rendered recipes/show.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 145ms (Views: 121.8ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/recipes/2/star_ratings/new" for ::1 at 2015-01-23 20:57:22 -0500
+Processing by StarRatingsController#create as HTML
+  Parameters: {"star_rating"=>{"rating"=>"1"}, "recipe_id"=>"2"}
+  [1m[35mRecipe Load (0.4ms)[0m  SELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "star_ratings" ("rating", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["rating", 1], ["created_at", "2015-01-24 01:57:22.854226"], ["updated_at", "2015-01-24 01:57:22.854226"]]
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "recipes_star_ratings" ("recipe_id", "star_rating_id") VALUES ($1, $2) RETURNING "id"[0m  [["recipe_id", 2], ["star_rating_id", 4]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/recipes/2
+Completed 302 Found in 47ms (ActiveRecord: 9.7ms)
+
+
+Started GET "/recipes/2" for ::1 at 2015-01-23 20:57:22 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.3ms)[0m  [1mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  Rendered recipes/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 162ms (Views: 160.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2015-01-23 20:57:26 -0500
+Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (0.9ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.8ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.5ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  Rendered recipes/index.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 135ms (Views: 130.6ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/recipes/2" for ::1 at 2015-01-23 20:58:40 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.3ms)[0m  [1mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  Rendered recipes/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 125ms (Views: 123.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2015-01-23 21:00:17 -0500
+Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (0.6ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.4ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  Rendered recipes/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 140ms (Views: 136.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/recipes/1" for ::1 at 2015-01-23 21:00:19 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.5ms)[0m  [1mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  Rendered recipes/show.html.erb within layouts/application (19.3ms)
+Completed 500 Internal Server Error in 25ms
+
+NameError - undefined local variable or method `recipe' for #<#<Class:0x007fddd784e8d0>:0x007fddd9cfaf30>:
+  app/views/recipes/show.html.erb:27:in `_app_views_recipes_show_html_erb__4228230381862227547_70295409380080'
+  actionview (4.2.0) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.0) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.0) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.0) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.0) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  app/controllers/recipes_controller.rb:32:in `show'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started GET "/recipes/1" for ::1 at 2015-01-23 21:00:19 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.4ms)[0m  [1mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  Rendered recipes/show.html.erb within layouts/application (15.7ms)
+Completed 500 Internal Server Error in 19ms
+
+NameError - undefined local variable or method `recipe' for #<#<Class:0x007fddd784e8d0>:0x007fddd98c82a0>:
+  app/views/recipes/show.html.erb:27:in `_app_views_recipes_show_html_erb__4228230381862227547_70295407170240'
+  actionview (4.2.0) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.0) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.0) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.0) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.0) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  app/controllers/recipes_controller.rb:32:in `show'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/8c752382f525def9/variables" for ::1 at 2015-01-23 21:00:19 -0500
+
+
+Started GET "/recipes/1" for ::1 at 2015-01-23 21:00:30 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.7ms)[0m  [1mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.9ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  Rendered recipes/show.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 115ms (Views: 111.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/recipes/recipes" for ::1 at 2015-01-23 21:00:31 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"recipes"}
+  [1m[36mRecipe Load (0.4ms)[0m  [1mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound - Couldn't find Recipe with 'id'=recipes:
+  activerecord (4.2.0) lib/active_record/core.rb:154:in `find'
+  app/controllers/recipes_controller.rb:31:in `show'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started GET "/recipes/recipes" for ::1 at 2015-01-23 21:00:31 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"recipes"}
+  [1m[35mRecipe Load (0.2ms)[0m  SELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound - Couldn't find Recipe with 'id'=recipes:
+  activerecord (4.2.0) lib/active_record/core.rb:154:in `find'
+  app/controllers/recipes_controller.rb:31:in `show'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.0) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/sean/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/03d78a30983b421d/variables" for ::1 at 2015-01-23 21:00:31 -0500
+
+
+Started GET "/" for ::1 at 2015-01-23 21:00:42 -0500
+Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (0.8ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.4ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  Rendered recipes/index.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 132ms (Views: 128.7ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/recipes/2" for ::1 at 2015-01-23 21:00:43 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.3ms)[0m  [1mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 2]]
+  Rendered recipes/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 103ms (Views: 100.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2015-01-23 21:00:44 -0500
+Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (0.4ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.5ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  Rendered recipes/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 142ms (Views: 138.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/recipes/1" for ::1 at 2015-01-23 21:00:46 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.3ms)[0m  [1mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  Rendered recipes/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 109ms (Views: 106.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2015-01-23 21:00:47 -0500
+Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (0.4ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.5ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mTag Load (0.8ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  Rendered recipes/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 118ms (Views: 114.8ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/recipes/1" for ::1 at 2015-01-23 21:00:51 -0500
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.3ms)[0m  [1mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (2.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  Rendered recipes/show.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 118ms (Views: 114.2ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/" for ::1 at 2015-01-23 21:00:52 -0500
+Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (0.4ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.4ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.3ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  Rendered recipes/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 121ms (Views: 118.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/recipes/new" for ::1 at 2015-01-23 21:01:23 -0500
+Processing by RecipesController#new as HTML
+  Rendered layouts/_errors.html.erb (0.7ms)
+  Rendered recipes/_form.html.erb (0.7ms)
+  Rendered recipes/new.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 117ms (Views: 115.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/recipes" for ::1 at 2015-01-23 21:01:24 -0500
+Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (0.5ms)[0m  [1mSELECT "recipes".* FROM "recipes"[0m
+  [1m[35mStarRating Load (0.3ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mStarRating Load (0.7ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1  [["recipe_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recipes_tags" ON "tags"."id" = "recipes_tags"."tag_id" WHERE "recipes_tags"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "star_ratings".* FROM "star_ratings" INNER JOIN "recipes_star_ratings" ON "star_ratings"."id" = "recipes_star_ratings"."star_rating_id" WHERE "recipes_star_ratings"."recipe_id" = $1  [["recipe_id", 2]]
+  Rendered recipes/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 123ms (Views: 120.5ms | ActiveRecord: 2.1ms)
