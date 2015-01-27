@@ -1,0 +1,63 @@
+
+body {
+  background-color: #C0E6FF;
+}
+
+.jumbotron {
+
+	background-color: #FFFFE0;
+	h1, h2, h3, h4, h5, h6 {
+		padding-left: 0px;
+	}
+    h2 {
+     color: green;
+    }
+}
+
+h1 {
+  color: green;
+  font-family: "Garamond";
+}
+
+h2 {
+  color: black;
+  font-family: "Garamond";
+
+}
+
+h3 {
+	font-family: "Garamond";
+}
+
+h4, h5, p{
+	color: green;
+	font-family: "Garamond";
+}
+
+
+
+a {
+	color: black;
+}
+
+#box {
+background-color: #FFFFE0;
+border: 3px solid #4DB8FF;
+h2 {
+	 text-align: center;
+   }   
+}
+
+.btn {
+background-color: #FFFFE0;
+border: 3px solid #4DB8FF;
+h3 {
+	 font-color: black;
+   } 
+}
+
+
+.column-indent {
+ padding-left: 145px;
+}
+

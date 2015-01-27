@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
 
   def new 
     @recipe = Recipe.new 
+    @tags = Tag.all
     render('recipes/new.html.erb')
   end
 
@@ -29,19 +30,19 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id]) 
+    @tags =Tag.all
     render('recipes/show.html.erb')
   end
 
   def edit 
     @recipe = Recipe.find(params[:id])
+    @tags = Tag.all
     render('recipes/edit.html.erb') 
   end
 
   def update 
     @recipe = Recipe.find(params[:id])
-    if @recipe.update(:number => params[:number], 
-                      :name => params[:name], 
-                      :text => params[:text])
+    if @recipe.update(params[:recipe])
 
       redirect_to("/recipes/#{@recipe.id}")
     else
@@ -52,8 +53,8 @@ class RecipesController < ApplicationController
  def destroy 
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-     flash[:notice] = "recipe deleted"
-    redirect_to("/chapters")
+     flash[:notice] = "Recipe Deleted"
+    redirect_to("/recipes")
  end
 
 end

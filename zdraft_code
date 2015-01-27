@@ -1,2 +1,12 @@
+   <% if @tags != nil %>
+   <form action="<%= @recipe.id %>/star_ratings/new" method="post">
+	<div class="form-group">
+	  <label for "tag_id">Tags</label>
+	  <% @tags.each do |tag| %>
+	    <input id="tag_name" name="tag[name]" type="checkbox" value="<%= tag.name %>"><%= tag.name %></input>
+	  <% end %>
+	 <% end %>
+	</div>
+</form>
 
 

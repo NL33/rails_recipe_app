@@ -8,19 +8,40 @@
      <%= tag.name %>, 
      <% end %></h3>
 
-<h3>Add a tag:
+<h3>Create a new tag:
 	<form action="<%= @recipe.id %>/tags/new" method="post">
 	<label for="tag_name">Tag Name</label>
     <input id="tag_name" name="tag[name]" type="string">
-    <button>Add Tag to this Recipe</button>
+    <button><h4>Add Tag to this Recipe</h4></button>
 	</form></h3>
+
+<h3> Add a preexisting tag</h3>
+   <% if @tags != nil %>
+  	<form action="<%= @recipe.id %>/tags/add" method="post">
+	<div class="form-group">
+	  <label for "tag_name">Tags</label>
+	  <% @tags.each do |tag| %>
+	    <input id="tag_name" name="tag[name]" type="checkbox" option value="<%= tag.name %>"><%= tag.name %></input>
+	  <% end %>
+	 <% end %>
+	 </div>
+   <button><h4>Add Tag to this Recipe</h4></button>
+</form>
 
 <h3>Add a star rating:
 	<form action="<%= @recipe.id %>/star_ratings/new" method="post">
 	<label for="star_rating_rating">(1 to 5)</label>
 	<input id="star_rating_rating" name="star_rating[rating]" type="integer">
-	<button>Add Star Rating to this Recipe</button>
+	<button><h4>Add Star Rating to this Recipe</h4></button>
 	</form></h3>
+
+
+<h3><a href="/recipes/<%= @recipe.id %>/edit">Edit recipe</h3>
+
+<h4><a href="/recipes/<%= @recipe.id %>"
+         data-confirm="Are you sure to want to delete this whole Recipe?"
+         data-method="delete"
+         rel="nofollow">Delete this recipe</a></h4>
 
 <h2> <a href="/">Back to Home Page</a></h2>
 

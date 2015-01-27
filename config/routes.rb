@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   match('/recipes/new', {:via => :get, :to => 'recipes#new'})
   match('recipes/new', {:via => :post, :to => 'recipes#create'})
   match('recipes/:id', {:via => :get, :to => 'recipes#show'})
+  match('recipes/:id/edit', {:via => :get, :to => 'recipes#edit'}) 
+  match('recipes/:id', {:via => [:patch, :put], :to => 'recipes#update'})  
+  match('recipes/:id', {:via => :delete, :to => 'recipes#destroy'}) 
   
 #tags
   match('recipes/:recipe_id/tags/new', {:via => :post, :to => 'tags#create'})
+  match('recipes/:recipe_id/tags/add', {:via => :post, :to => 'tags#create'})
   match('tags/:id', {:via => :get, :to => 'tags#show'})
 
 #star_ratings

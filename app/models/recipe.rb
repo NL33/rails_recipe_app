@@ -9,7 +9,8 @@ def average_rating
   self.star_ratings.each do |star_rating|
 		ratings << star_rating.rating
   end
-  ratings.sum / ratings.size.to_f
+  result = ratings.sum / ratings.size.to_f
+  result.round(2)  #rounds the result to not more than two decimals
 end
 
 
@@ -24,6 +25,7 @@ end
     avg_ratings.sort_by {|recipe, average_rating| average_rating}.reverse  #sorts hash
  end  #alternative: avg.keys.sort { |a, b| avg_ratings[b] <=> avg_ratings[a] }
     	#then can run <% Recipe.order_by_rating.each do |recipe| %>
+
 
 
 end
